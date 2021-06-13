@@ -35,7 +35,7 @@ const ListProduct = () => {
 
     const price = parseInt(data.Product_price);
     const quantity = parseInt(data.Product_quantity);
-    console.log(typeof quantity, quantity, typeof data.Product_quantity);
+
     if (price == data.Product_price) {
       setCount({ status: "Price not Decimal" });
     } else {
