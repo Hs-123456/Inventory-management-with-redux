@@ -28,6 +28,7 @@ const SearchProduct = () => {
     dispatch(update_product_state(update));
     setValue_product(update);
     setState("Update Successfully");
+    console.log("update", update);
   };
 
   const [search_data, new_search_data] = useState({
@@ -150,7 +151,7 @@ const SearchProduct = () => {
                           <input
                             className="form-control"
                             type="text"
-                            name={Product_quantity}
+                            name="Product_quantity"
                             placeholder={post.Product_quantity}
                             onChange={(e) => updateProduct(e)}
                           />
