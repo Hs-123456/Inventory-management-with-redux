@@ -54,7 +54,7 @@ const SearchProduct = () => {
       return item.id;
     });
 
-  console.log("result", result[0]);
+
   const setValue_product = () => {
     addProduct.map((element, index) => {
       if (element.id === result[0]) {
