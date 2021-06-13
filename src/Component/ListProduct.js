@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import SearchProduct from "./SearchProduct";
 import FilterProduct from "./FilterProduct";
 const ListProduct = () => {
+  const [state, setState] = useState("");
   const dispatch = useDispatch();
   const [data, setData] = useState({
     id: Math.floor(Math.random() * (200 - 100) + 100),
@@ -41,12 +42,17 @@ const ListProduct = () => {
     } else {
       if (quantity == data.Product_quantity) {
         dispatch(AddProduct_data(data));
+        setState("Add Product Successfully");
         setCount({ status: " " });
       } else {
         setCount({ status: "Quantity not Number" });
       }
     }
   };
+  if (state === "Add Product Successfully") {
+    console.log("Hello");
+  }
+
   return (
     <div>
       <div class="container">
@@ -82,14 +88,12 @@ const ListProduct = () => {
           <div class="modal-content">
             <div class="modal-header">
               <h5 class="modal-title" id="exampleModalLabel">
-                Add Product
+                {state === "Add Product Successfully" ? (
+                  <p class="text-success">Add Product Successfully</p>
+                ) : (
+                  "Add Product"
+                )}
               </h5>
-              <button
-                type="button"
-                class="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
             </div>
             <div class="modal-body">
               <form onSubmit={(e) => addProduct_form(e)}>
@@ -155,6 +159,7 @@ const ListProduct = () => {
                     type="button"
                     class="btn btn-secondary"
                     data-bs-dismiss="modal"
+                    onClick={() => setState(" ")}
                   >
                     Close
                   </button>
