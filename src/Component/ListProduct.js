@@ -38,12 +38,13 @@ const ListProduct = () => {
     console.log(typeof quantity, quantity, typeof data.Product_quantity);
     if (price == data.Product_price) {
       setCount({ status: "Price not Decimal" });
-    }
-    if (quantity == data.Product_quantity) {
-      dispatch(AddProduct_data(data));
-    
     } else {
-      setCount({ status: "Quantity not Number" });
+      if (quantity == data.Product_quantity) {
+        dispatch(AddProduct_data(data));
+        setCount({ status: " " });
+      } else {
+        setCount({ status: "Quantity not Number" });
+      }
     }
   };
   return (
