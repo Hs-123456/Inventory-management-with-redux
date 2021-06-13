@@ -49,9 +49,6 @@ const ListProduct = () => {
       }
     }
   };
-  if (state === "Add Product Successfully") {
-    console.log("Hello");
-  }
 
   return (
     <div>
