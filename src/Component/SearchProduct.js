@@ -9,7 +9,7 @@ const SearchProduct = () => {
   const dispatch = useDispatch();
   const state = useSelector((state) => state);
   const { addProduct } = state.inventory;
-  
+  const [update_sate, setState] = useState(" ");
   const [update, new_update] = useState({
     Product_name: "",
     Product_description: "",
@@ -27,9 +27,9 @@ const SearchProduct = () => {
     e.preventDefault();
     dispatch(update_product_state(update));
     setValue_product(update);
+    setState("Update Successfully");
   };
 
-  const [count, setCount] = useState(true);
   const [search_data, new_search_data] = useState({
     search: "",
   });
@@ -39,7 +39,6 @@ const SearchProduct = () => {
   };
   const addSearchForm = (e) => {
     e.preventDefault();
-    
   };
 
   var newArray = addProduct.filter(function (el, id) {
@@ -53,7 +52,6 @@ const SearchProduct = () => {
     .map(function (item) {
       return item.id;
     });
-
 
   const setValue_product = () => {
     addProduct.map((element, index) => {
@@ -73,7 +71,7 @@ const SearchProduct = () => {
           name="search"
           value={search}
           onChange={(e) => addSearch(e)}
-          placeholder="Search"
+          placeholder="Search and Edit"
           aria-label="Search"
         />
         <button
@@ -97,14 +95,12 @@ const SearchProduct = () => {
           <div class="modal-content">
             <div class="modal-header">
               <h5 class="modal-title" id="exampleModalLabel">
-                Search And Edit Product
+                {update_sate === "Update Successfully" ? (
+                  <p class="text-success">Update Successfully</p>
+                ) : (
+                  "Search and Edit Product"
+                )}
               </h5>
-              <button
-                type="button"
-                class="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
             </div>
             <form onSubmit={(e) => submit_update_product(e)}>
               <div class="modal-body">
@@ -115,7 +111,6 @@ const SearchProduct = () => {
                       <th scope="col">Description</th>
                       <th scope="col">Price</th>
                       <th scope="col">Quantity</th>
-                      <th>Edit</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -129,7 +124,6 @@ const SearchProduct = () => {
                             value={Product_name}
                             placeholder={post.Product_name}
                             onChange={(e) => updateProduct(e)}
-                            disabled={count}
                           />
                         </th>
                         <td>
@@ -140,7 +134,6 @@ const SearchProduct = () => {
                             value={Product_description}
                             placeholder={post.Product_description}
                             onChange={(e) => updateProduct(e)}
-                            disabled={count}
                           />
                         </td>
                         <td>
@@ -151,7 +144,6 @@ const SearchProduct = () => {
                             value={Product_price}
                             placeholder={post.Product_price}
                             onChange={(e) => updateProduct(e)}
-                            disabled={count}
                           />
                         </td>
                         <td>
@@ -161,18 +153,7 @@ const SearchProduct = () => {
                             name={Product_quantity}
                             placeholder={post.Product_quantity}
                             onChange={(e) => updateProduct(e)}
-                            disabled={count}
                           />
-                        </td>
-                        <td></td>
-                        <td>
-                          <button
-                            type="button"
-                            class="btn btn-primary"
-                            onClick={() => setCount(false)}
-                          >
-                            edit
-                          </button>
                         </td>
                       </tr>
                     ))}
@@ -183,7 +164,7 @@ const SearchProduct = () => {
                     type="button"
                     class="btn btn-secondary"
                     data-bs-dismiss="modal"
-                    onClick={() => setCount(true)}
+                    onClick={() => setState(" ")}
                   >
                     Close
                   </button>
