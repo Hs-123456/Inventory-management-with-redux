@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Allproduct from "./Allproduct";
 import { AddProduct_data } from "../Redux/inventorySlice";
 import { useDispatch } from "react-redux";
@@ -8,7 +8,7 @@ const ListProduct = () => {
   const [state, setState] = useState("");
   const dispatch = useDispatch();
   const [data, setData] = useState({
-    id: Math.floor(Math.random() * (200 - 100) + 100),
+    id: Number,
     Product_name: "",
     Product_description: "",
     Product_price: "",
@@ -18,6 +18,10 @@ const ListProduct = () => {
   const [count, setCount] = useState({
     status: "",
   });
+
+  const setRandom = () => {
+    setData({ id: Math.floor(Math.random() * (1000 - 100)) + 100 });
+  };
 
   const {
     Product_name,
@@ -60,6 +64,7 @@ const ListProduct = () => {
               class="btn btn-success"
               data-bs-toggle="modal"
               data-bs-target="#listProduct"
+              onClick={() => setRandom()}
             >
               Add Product
             </button>
