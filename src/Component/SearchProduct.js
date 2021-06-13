@@ -9,6 +9,7 @@ const SearchProduct = () => {
   const dispatch = useDispatch();
   const state = useSelector((state) => state);
   const { addProduct } = state.inventory;
+
   const [update_sate, setState] = useState(" ");
   const [update, new_update] = useState({
     Product_name: "",
@@ -28,7 +29,6 @@ const SearchProduct = () => {
     dispatch(update_product_state(update));
     setValue_product(update);
     setState("Update Successfully");
-    console.log("update", update);
   };
 
   const [search_data, new_search_data] = useState({
@@ -125,6 +125,7 @@ const SearchProduct = () => {
                             value={Product_name}
                             placeholder={post.Product_name}
                             onChange={(e) => updateProduct(e)}
+                            required="true"
                           />
                         </th>
                         <td>
@@ -135,6 +136,7 @@ const SearchProduct = () => {
                             value={Product_description}
                             placeholder={post.Product_description}
                             onChange={(e) => updateProduct(e)}
+                            required="true"
                           />
                         </td>
                         <td>
@@ -145,6 +147,7 @@ const SearchProduct = () => {
                             value={Product_price}
                             placeholder={post.Product_price}
                             onChange={(e) => updateProduct(e)}
+                            required="true"
                           />
                         </td>
                         <td>
@@ -152,8 +155,10 @@ const SearchProduct = () => {
                             className="form-control"
                             type="text"
                             name="Product_quantity"
+                            value={Product_quantity}
                             placeholder={post.Product_quantity}
                             onChange={(e) => updateProduct(e)}
+                            required="true"
                           />
                         </td>
                       </tr>
