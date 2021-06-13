@@ -71,7 +71,7 @@ const FilterProduct = () => {
           <div class="modal-content">
             <div class="modal-header">
               <h5 class="modal-title" id="exampleModalLabel">
-                Modal title
+                Filter Product
               </h5>
               <button
                 type="button"
@@ -107,9 +107,6 @@ const FilterProduct = () => {
                 data-bs-dismiss="modal"
               >
                 Close
-              </button>
-              <button type="button" class="btn btn-primary">
-                Save changes
               </button>
             </div>
           </div>
