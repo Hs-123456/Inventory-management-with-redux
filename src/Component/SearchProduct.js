@@ -9,7 +9,7 @@ const SearchProduct = () => {
   const dispatch = useDispatch();
   const state = useSelector((state) => state);
   const { addProduct } = state.inventory;
-
+  console.log(addProduct);
   const [update, new_update] = useState({
     Product_name: "",
     Product_description: "",
